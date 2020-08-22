@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hoony.student">
+
+	<select id="getStudent" resultType="com.hoony.lab.dto.Student">
+		select * from school.student
+	</select>
+
+	<insert id="addStudent"
+		parameterType="com.hoony.lab.dto.Student">
+		insert into school.student(s_name, s_grade,
+		s_department, s_address, s_phone) values(#{s_name}, #{s_grade},
+		#{s_department}, #{s_address}, #{s_phone})
+	</insert>
+
+	<delete id="deleteStudent" parameterType="java.lang.Integer">
+		delete from
+		school.student where s_id = #{id}
+	</delete>
+
+	<select id="getStudentOne"
+		resultType="com.hoony.lab.dto.Student"
+		parameterType="java.lang.Integer">
+		select * from school.student where s_id = #{id}
+	</select>
+	
+	<update id="updateStudent" parameterType="com.hoony.lab.dto.Student">
+		update school.student set s_name = #{s_name}, s_grade = #{s_grade}, 
+		s_department = #{s_department}, s_address = #{s_address}, s_phone = #{s_phone}
+		where s_id = #{s_id}
+	</update>
+
+</mapper>
